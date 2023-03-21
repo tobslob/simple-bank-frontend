@@ -1,5 +1,5 @@
 import React from "react";
-import DashboardLayout from "../../../../simple-bank-frontend/src/components/DashBoardLayout/DashboardLayout";
+import DashboardLayout from "../DashBoardLayout/DashboardLayout";
 import MainContent from "./MainContent";
 
 const Dashboard = () => {
