@@ -1,0 +1,78 @@
+.account-history {
+  background: white;
+  width: 100%;
+  padding: 20px;
+  margin-top: 20px;
+
+  .recent-transactions {
+    margin-top: 25px;
+    padding: 20px 0;
+    border-top: 3px solid #f6f6f6;
+    .recent-trans-heading {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      button {
+        color: #4f4bf5;
+        background: none;
+        border: none;
+      }
+    }
+    h5 {
+      margin: 0;
+    }
+    .transaction {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      background: #fafaff;
+      border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+      .left-content {
+        display: flex;
+        .transaction-medium {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          margin-left: 15px;
+          span {
+            color: rgba(53, 53, 53, 0.6);
+            font-size: 14px;
+            &:nth-child(1) {
+              color: #282626;
+            }
+          }
+        }
+        .arrow {
+          background: #e6e6ff;
+          padding: 12px;
+          border-radius: 10px;
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+  }
+  .options {
+    display: flex;
+    justify-content: space-between;
+    .trans-option {
+      display: flex;
+      background: #e6e6ff;
+      align-items: center;
+      padding: 8px;
+      width: 32%;
+      font-size: 13px;
+      img {
+        background: white;
+        border-radius: 50%;
+        padding: 5px;
+      }
+      .trans-to {
+        display: flex;
+        flex-direction: column;
+        margin-left: 5px;
+      }
+    }
+  }
+}
