@@ -1,0 +1,49 @@
+.overview {
+  width: 100%;
+  background: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  h2 {
+    margin: 0;
+    color: #4f4bf5;
+  }
+  .overview-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button {
+      border: 1px solid #4f4bf5;
+      border-radius: 15px;
+      color: #000000;
+      background: none;
+      padding: 7px 15px;
+    }
+  }
+
+  .account-balance {
+    background: #fafaff;
+    padding: 30px;
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    .account-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 50%;
+      padding: 20px;
+      &:nth-child(1){
+        background: #E6E6FF;
+      }
+      span{
+        color: #353535;
+        font-size: 12px;
+        margin-right: 10px;
+      }
+      strong{
+        color: #000000
+      }
+    }
+  }
+}
