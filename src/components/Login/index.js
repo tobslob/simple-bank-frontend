@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import BankApp from "../../assets/BankApp.png";
+import { mainbody, image } from "../Signup/signupstyle";
 import {
   inputbox,
-  // loginbody,
   loginbutton,
   loginContainer,
   loginHead,
-  loginImage,
   loginInput,
   loginlink,
   loginredirect,
@@ -16,10 +15,8 @@ import {
 
 function Login() {
   return (
-    <div>
-      <div style={loginImage}>
-        <img src={BankApp} alt="logo" />
-      </div>
+    <div style={mainbody}>
+      <img src={BankApp} alt="logo" style={image} />
       <div style={loginContainer}>
         <p style={loginHead}>Login</p>
         <div style={loginInput}>

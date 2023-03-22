@@ -1,7 +1,7 @@
 export const mainbody = {
   backgroundColor: "#F5F5F5",
-  width: '100%',
-  height: '100%',
+  width: "100%",
+  height: "100vh",
 };
 
 export const image = {
@@ -31,14 +31,14 @@ export const paragraph = {
 
 //signup details page
 export const detailscontainer = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  padding: '40px',
-  width: '606px',
-  backgroundColor: '#fff',
-  boxShadow: '0px 0px 4px rgba(0, 0, 0.25)',
-  margin: '0 auto',
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  padding: "40px",
+  width: "606px",
+  backgroundColor: "#fff",
+  boxShadow: "0px 0px 4px rgba(0, 0, 0.25)",
+  margin: "0 auto",
 };
 export const detailsParagraph = {
   // marginTop: "-600px",
@@ -155,9 +155,8 @@ export const footer = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  alignItems: "center", 
-  padding: 40
-  ,
+  alignItems: "center",
+  padding: 40,
 };
 
 export const footerPara = {
