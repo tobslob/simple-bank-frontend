@@ -1,12 +1,3 @@
-// export const loginbody = {
-//   backgroundColor: "#f5f5f5",
-//   height: "100%",
-//   margin: "0px",
-// };
-export const loginImage = {
-  padding: 30,
-};
-
 export const loginContainer = {
   margin: "0 auto",
   backgroundColor: "#fff",
