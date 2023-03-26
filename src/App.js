@@ -1,19 +1,21 @@
-import { Route, Routes } from "react-router-dom";
-import Dashboard from "./components/Dashboard";
-import Signup from "./components/Signup";
-import Signupdetails from "./components/Signup/Signupdetails";
-// import Mail from "./components/Signup/Mail";
-import Login from "./components/Login";
-import "./App.css";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import Signup from "./screens/Signup";
+import Dashboard from "./screens/Dashboard";
+import Login from "./screens/Login";
+import { useAuthorization } from "./hooks";
+import { useEffect } from "react";
 
 function App() {
+  useAuthorization();
+
   return (
     <Routes>
-      <Route path="/" element={<Signup />} />
-      <Route path="/signupdetails" element={<Signupdetails />} />
-      {/* <Route path="/mail" element={<Mail />} /> */}
-      <Route path="/login" element={<Login />} />
+      {/*<Route path="/" element={<Signup />} />*/}
+      <Route path="/signup" element={<Signup />} />
+      {/*<Route path="/signup-details" element={<Signup />} />*/}
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/transactions" element={<Dashboard />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   );
 }
