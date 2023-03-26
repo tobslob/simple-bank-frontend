@@ -5,7 +5,6 @@ import AccountHistory from "src/screens/Transactions/AccountHistory";
 import "src/screens/Dashboard/index.scss";
 import TransactionsProvider from "src/contexts/TransactionsProvider";
 import TransferProvider from "src/contexts/TransferProvider";
-import UsersProvider from "src/contexts/UsersProvider";
 
 const MainContent = () => {
   return (

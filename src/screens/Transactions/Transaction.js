@@ -15,16 +15,22 @@ const Transaction = ({ transaction }) => {
           <span>{transaction?.description || "No Description"}</span>
           <span>
             {moment(transaction?.createdAt).format("llll ")}
-            {/*03 Aug 2022 | 10:00*/}
           </span>
         </div>
       </div>
 
-      <div>
-        $
-        {_.compact([
-          formatNumber(transaction?.amount, "0,0.00") || "0.00",
-        ]).join(" ")}
+      <div className="space-x-1">
+        {transaction.tranferType === "CREDIT" ? (
+          <span className="text-green-600">+</span>
+        ) : (
+          <span className="text-red-600">-</span>
+        )}
+        <span>
+          {_.compact([
+            transaction?.currency,
+            formatNumber(transaction?.amount, "0,0.00") || "0.00",
+          ]).join(" ")}
+        </span>
       </div>
     </div>
   );

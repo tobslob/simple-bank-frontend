@@ -10,12 +10,12 @@ import { formatNumber } from "src/utils";
 
 const Overview = () => {
   const [modal, setModal] = useState(false);
-
-  const { user } = useAuthUser();
   const accountModal = useAccountModal({ modal, setModal });
   const handleToggleModal = () => {
     setModal(!modal);
   };
+
+  const { user } = useAuthUser();
 
   return (
     <div className="overview">
@@ -28,7 +28,6 @@ const Overview = () => {
         </div>
 
         {accountModal}
-        {/*{modal && <Modal />}*/}
       </div>
 
       <div className="account-balance">
@@ -52,10 +51,9 @@ const Overview = () => {
             <img src={spent} alt="" />
           </div>
           <strong>
-            {/*$3,000,000*/}
             {_.compact([
               user?.claim?.account[0]?.currency,
-              formatNumber(user?.claim?.account[0]?.balance, "0,0.00") ||
+              formatNumber(user?.claim?.account[0]?.totalSpent, "0,0.00") ||
                 "0.00",
             ]).join(" ")}
           </strong>
