@@ -15,6 +15,7 @@ import BankApp from "src/assets/BankApp.png";
 import { Form, Formik } from "formik";
 import authService from "src/services/auth.service";
 import cogoToast from "cogo-toast";
+import { saveUser } from "src/utils";
 
 const Signup = () => {
   // const {loading, userInfo, error, success} = useSelector((state) => state.auth);
@@ -49,6 +50,7 @@ const Signup = () => {
         authService
           .signup(values)
           .then((res) => {
+            saveUser(res?.data, res?.data);
             cogoToast.success("User account created successfully! ");
           })
           .catch((e) => {

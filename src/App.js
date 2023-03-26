@@ -1,9 +1,8 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Signup from "./screens/Signup";
 import Dashboard from "./screens/Dashboard";
 import Login from "./screens/Login";
 import { useAuthorization } from "./hooks";
-import { useEffect } from "react";
 
 function App() {
   useAuthorization();

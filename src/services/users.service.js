@@ -1,10 +1,10 @@
 import { client } from "../services/index";
 
 const usersServices = {
-  getUserByToken: (token) => {
+  getUserById: (id) => {
     return new Promise((resolve, reject) => {
       return client
-        .get(`users/${token}`)
+        .get(`users/${id}`)
         .then((res) => resolve(res.data))
         .catch((e) => {
           reject(e);

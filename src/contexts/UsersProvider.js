@@ -8,10 +8,10 @@ function UsersProvider({ children }) {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
 
-  const getUserByToken = (id, onComplete) => {
+  const getUserById = (id, onComplete) => {
     setLoading(true);
     usersServices
-      .getUserByToken(id)
+      .getUserById(id)
       .then((res) => {
         setLoading(false);
         console.log("res", res);
@@ -27,7 +27,7 @@ function UsersProvider({ children }) {
 
   const value = {
     loading,
-    getUserByToken,
+    getUserById,
     user,
   };
   return <Provider value={value}>{children}</Provider>;

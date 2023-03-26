@@ -153,11 +153,11 @@ export const useAuthUser = () => {
   const localUser = JSON.parse(storageService.getItem("user"));
   const token = storageService.getItem("token");
 
-  const { getUserByToken, user } = useUsersContext();
+  const { getUserById, user } = useUsersContext();
 
   useEffect(() => {
-    getUserByToken(token);
+    getUserById(localUser?.claim?.id);
   }, [token]);
 
-  return { user: user || localUser, token };
+  return { user: user || localUser || token };
 };
