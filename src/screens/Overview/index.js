@@ -16,7 +16,6 @@ const Overview = () => {
   };
 
   const { user } = useAuthUser();
-  console.log("USERRRR:", user);
 
   return (
     <div className="overview">
