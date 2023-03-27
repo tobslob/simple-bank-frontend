@@ -16,7 +16,7 @@ const Account = () => {
           <img src={mention} alt="" />
           <div>
             <p>Account Number</p>
-            <span>{user?.claim?.account[0]?.accountNumber}</span>
+            <span>{user?.account?.[0]?.accountNumber}</span>
           </div>
         </div>
         <div className="acc-detail">
@@ -24,9 +24,7 @@ const Account = () => {
           <div>
             <p>Account Name</p>
             <span>
-              {_.compact([user?.claim?.firstName, user?.claim?.lastName]).join(
-                " "
-              )}
+              {_.compact([user?.firstName, user?.lastName]).join(" ")}
             </span>
           </div>
         </div>
@@ -37,9 +35,8 @@ const Account = () => {
             <p>Account Balance</p>
             <span>
               {_.compact([
-                user?.claim?.account[0]?.currency,
-                formatNumber(user?.claim?.account[0]?.balance, "0,0.00") ||
-                  "0.00",
+                user?.account?.[0]?.currency,
+                formatNumber(user?.account?.[0]?.balance, "0,0.00") || "0.00",
               ]).join(" ")}
             </span>
           </div>

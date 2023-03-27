@@ -10,7 +10,7 @@ function TopHeader() {
     <HeadContainer className="top-header drop-shadow-md z-10">
       <div className="">
         <p className="font-bold text-primary text-2xl">
-          Hello {user?.claim?.firstName}
+          Hello {user?.firstName}
         </p>
         <span className="text-gray-400 text-sm">Glad to see you again</span>
       </div>

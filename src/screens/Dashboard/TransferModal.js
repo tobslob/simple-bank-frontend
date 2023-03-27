@@ -10,6 +10,7 @@ import * as _ from "lodash";
 import { transferServices } from "src/services/transfer.service";
 import cogoToast from "cogo-toast";
 import { useTransactionsContext } from "src/contexts/TransactionsProvider";
+import { useUsersContext } from "src/contexts/UsersProvider";
 
 function TransferModal({
   user,
@@ -45,13 +46,14 @@ export const TransferForm = ({
   setTransferData,
 }) => {
   const { user } = useAuthUser();
+  const { getUserById } = useUsersContext();
 
   const initialValues = {
     sortCode: "",
     toAccountId: "",
     amount: "",
     description: "",
-    currency: user?.claim?.account?.[0]?.currency || "USD",
+    currency: user?.account?.[0]?.currency || "USD",
   };
 
   const [steps, setStep] = useState("one");
@@ -76,7 +78,9 @@ export const TransferForm = ({
             console.log("res", res);
             cogoToast.success("Transaction was successful!");
             getTransactions();
+            getUserById(user?.id);
             setStep("three");
+            setModal(false);
           })
           .catch((e) => {
             cogoToast.error(
@@ -91,7 +95,7 @@ export const TransferForm = ({
           <Form>
             <div
               className={classNames(
-                `flex  pb-3 `,
+                `flex  pb-3 mb-4 items-center`,
                 steps === "two" ? "justify-between" : "justify-end"
               )}
             >
@@ -103,7 +107,10 @@ export const TransferForm = ({
                   Back
                 </span>
               )}
-              <CloseOutlined className="w-20" onClick={() => setModal(false)} />
+              <CloseOutlined
+                style={{ fontSize: "1.5em" }}
+                onClick={() => setModal(false)}
+              />
             </div>
             {steps === "one" && (
               <>
@@ -113,8 +120,8 @@ export const TransferForm = ({
                 <p className="text-sm text-gray-500 mb-1">Wallet Balance</p>
                 <h1 className="font-bold text-3xl text-primary mb-4">
                   {_.compact([
-                    user?.claim?.account?.[0]?.currency,
-                    formatNumber(user?.claim?.account?.[0]?.balance, "0,0.00"),
+                    user?.account?.[0]?.currency,
+                    formatNumber(user?.account?.[0]?.balance, "0,0.00"),
                   ]).join(" ")}
                 </h1>
                 <div className="border-b w-20  border-gray-300 mb-5" />
@@ -151,7 +158,7 @@ export const TransferForm = ({
                     />
                   </div>
                 </div>
-                <div className="mt-4">
+                <div className="mt-8">
                   <div className="flex w-full">
                     <Button
                       onClick={() => {
@@ -169,14 +176,14 @@ export const TransferForm = ({
 
             {steps === "two" && (
               <>
-                <h1 className="text-lg font-bold mb-5">
+                <h1 className="text-2xl font-bold mb-4">
                   Transfer Funds to Account
                 </h1>{" "}
-                <p className="text-sm text-gray-500 mb-1">Wallet Balance</p>
+                <p className="text-sm text-gray-400 mb-1">Wallet Balance</p>
                 <h1 className="font-bold text-3xl text-primary mb-4">
                   {_.compact([
-                    user?.claim?.account?.[0]?.currency,
-                    formatNumber(user?.claim?.account?.[0]?.balance, "0,0.00"),
+                    user?.account?.[0]?.currency,
+                    formatNumber(user?.account?.[0]?.balance, "0,0.00"),
                   ]).join(" ")}
                 </h1>
                 <div className="border-b w-20  border-gray-300 mb-5" />
@@ -198,16 +205,16 @@ export const TransferForm = ({
                         </div>
                       </div>
                       <div className="flex justify-between p-2">
-                        <div className="space-y-1">
-                          <div>Amount Name</div>
+                        {/* <div className="space-y-1"> */}
+                          {/* <div>Amount Name</div>
                           <p className="text-gray-500">
                             {_.compact([
                               user?.claim?.firstName,
                               user?.claim?.lastName,
                             ]).join(" ")}
-                          </p>
-                        </div>
-                        <div className="space-y-1 text-right">
+                          </p> */}
+                        {/* </div> */}
+                        <div className="space-y-1">
                           <div>Account Number </div>
                           <p className="text-gray-500">
                             {_.compact([values?.toAccountId]).join(" ")}
