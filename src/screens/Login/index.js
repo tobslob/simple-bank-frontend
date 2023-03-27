@@ -26,7 +26,7 @@ function Login() {
           .login(values)
           .then((res) => {
             const user = jwtDecode(res?.data);
-            saveUser(user, res?.data);
+            saveUser(user?.claim, res?.data);
             navigate(routeService.dashboard);
             cogoToast.success("User Logged in successfully!");
           })
