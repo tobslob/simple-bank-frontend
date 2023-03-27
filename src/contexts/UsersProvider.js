@@ -14,9 +14,9 @@ function UsersProvider({ children }) {
       .getUserById(id)
       .then((res) => {
         setLoading(false);
-        console.log("res", res);
-        setUser({ claim: res?.data });
-        saveUser(res);
+        console.log("res in get user by token", res);
+        setUser(res?.data);
+        saveUser(res?.data);
         onComplete && onComplete(res);
       })
       .catch((e) => {

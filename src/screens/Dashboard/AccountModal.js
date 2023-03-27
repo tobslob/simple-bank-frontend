@@ -10,6 +10,7 @@ import { formatNumber } from "src/utils";
 import cogoToast from "cogo-toast";
 import { useTransactionsContext } from "src/contexts/TransactionsProvider";
 import { accountServices } from "src/services/account.service";
+import * as _ from "lodash";
 
 function AccountModal({ user, setModal, modal, accountData, setAccountData }) {
   return (
@@ -34,7 +35,7 @@ function AccountModal({ user, setModal, modal, accountData, setAccountData }) {
 }
 export const AccountForm = ({ setModal, accountData, setAccountData }) => {
   const initialValues = {
-    transfer_type: "",
+    transfer_type: "card",
     balance: "",
     description: "",
   };
@@ -58,9 +59,8 @@ export const AccountForm = ({ setModal, accountData, setAccountData }) => {
         accountServices
           .addMoney(others)
           .then((res) => {
-            console.log("res", res);
             getTransactions();
-            getUserById(authUser?.claim?.id);
+            getUserById(authUser?.id);
             setModal(false);
             cogoToast.success("Account has been topped up successfully!!");
           })
@@ -82,7 +82,7 @@ export const AccountForm = ({ setModal, accountData, setAccountData }) => {
             <h1 className="text-2xl font-bold mb-4 ">Fund Wallet</h1>
             <p className=" text-gray-400 text-sm">Wallet balance</p>{" "}
             <h2 className=" text-primary font-bold text-3xl">
-              ${formatNumber(authUser?.claim?.account[0]?.balance, "0,0.00")}
+              ${formatNumber(authUser?.account?.[0]?.balance, "0,0.00")}
             </h2>{" "}
             <div className="w-20 border-b border-gray-300 my-4"></div>
             {/*<hr className="-mx-5" />*/}
@@ -163,26 +163,36 @@ export const AccountForm = ({ setModal, accountData, setAccountData }) => {
                       <div className="flex w-3/4 p-6   justify-between">
                         <div>
                           <p className="text-gray-400">Account number </p>
-                          <p className="font-bold">134343</p>
+                          <p className="font-bold">
+                            {authUser?.account?.[0]?.accountNumber}
+                          </p>
                         </div>
                         <div>
                           <CopyOutlined className="text-primary" />
                         </div>
                         <div>
                           <p className="text-gray-400">Sort code</p>
-                          <p className="font-bold">134343</p>
+                          <p className="font-bold">
+                            {authUser?.account?.[0]?.sortCode}
+                          </p>
                         </div>
                       </div>
                       <div className="flex p-6">
                         <div>
                           <p className="text-gray-300">Beneficiary Name </p>
-                          <p className="font-bold">John Doe</p>
+                          <p className="font-bold">
+                            {" "}
+                            {_.compact([
+                              authUser?.firstName,
+                              authUser?.lastName,
+                            ]).join(" ")}
+                          </p>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="col-span-2 text-center text-xs text-gray-400">
-                    To fund wallet via a bank transfer, pleaase copy the account
+                    To fund wallet via a bank transfer, please copy the account
                     number above and send your funds to it
                   </div>
                 </>

@@ -6,7 +6,6 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import authService from "src/services/auth.service";
 import cogoToast from "cogo-toast";
-import { saveUser } from "src/utils";
 import routeService from "src/services/route.service";
 
 const Index = () => {
@@ -33,9 +32,8 @@ const Index = () => {
       onSubmit={(values) => {
         authService
           .signup(values)
-          .then((res) => {
-            saveUser(res?.data, res?.data?.token);
-            navigate(routeService.dashboard);
+          .then(() => {
+            navigate(routeService.login);
             cogoToast.success("Your account has been create successfully!!");
           })
           .catch((e) => {

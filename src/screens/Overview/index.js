@@ -38,9 +38,8 @@ const Overview = () => {
           </div>
           <strong>
             {_.compact([
-              user?.claim?.account[0]?.currency,
-              formatNumber(user?.claim?.account[0]?.balance, "0,0.00") ||
-                "0.00",
+              user?.account?.[0]?.currency,
+              formatNumber(user?.account?.[0]?.balance, "0,0.00") || "0.00",
             ]).join(" ")}
           </strong>
         </div>
@@ -52,9 +51,8 @@ const Overview = () => {
           </div>
           <strong>
             {_.compact([
-              user?.claim?.account[0]?.currency,
-              formatNumber(user?.claim?.account[0]?.totalSpent, "0,0.00") ||
-                "0.00",
+              user?.account?.[0]?.currency,
+              formatNumber(user?.account?.[0]?.totalSpent, "0,0.00") || "0.00",
             ]).join(" ")}
           </strong>
         </div>

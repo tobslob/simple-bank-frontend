@@ -21,12 +21,8 @@ const UserAccount = () => {
         <div className="customer">
           <img src={man} alt="" />
           <div>
-            <p>
-              {_.compact([user?.claim?.firstName, user?.claim?.lastName]).join(
-                " "
-              )}
-            </p>
-            <span>{user?.claim?.email}</span>
+            <p>{_.compact([user?.firstName, user?.lastName]).join(" ")}</p>
+            <span>{user?.email}</span>
           </div>
         </div>
         <div className="carret-icon">
